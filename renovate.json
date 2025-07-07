@@ -7,9 +7,10 @@
     {
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
-        "^\\s*FROM\\s+python:(?<version>.*?)-slim-bookworm@sha256:[a-z0-9]+"
+        "^\\s*FROM\\s+(?<depName>python):(?<currentValue>.*?)-slim-bookworm@sha256:[a-z0-9]+"
       ],
-      "datasourceTemplate": "docker"
+      "datasourceTemplate": "docker",
+      "currentValueTemplate": "{{currentValue}}"
     }
   ]
 }
