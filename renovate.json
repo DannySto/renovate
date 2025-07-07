@@ -5,12 +5,11 @@
   ],
   "customManagers": [
     {
-      "fileMatch": ["^Dockerfile$"],
-      "matchStrings": [
-        "^\\\\s*FROM\\\\s+(?<depName>python):(?<currentValue>.*?)-slim-bookworm@sha256:[a-z0-9]+"
-      ],
+      "customType": "regex",
+      "managerFilePatterns": ["/^Dockerfile$/"],
+      "matchStrings": ["ARG PYTHON_VERSION=(?<currentValue>.*?)\\n"],
+      "depNameTemplate": "python",
       "datasourceTemplate": "docker",
-      "currentValueTemplate": "{{currentValue}}"
-    }
+      "versioningTemplate": "docker"    }
   ]
 }
