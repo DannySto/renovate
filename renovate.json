@@ -3,11 +3,11 @@
   "extends": [
     "config:recommended"
   ],
-  "customManagers":[
+  "customManagers": [
     {
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
-        "^\\s*FROM\\s+(?<depName>python):(?<currentValue>.*?)-slim-bookworm@sha256:[a-z0-9]+"
+        "^\\\\s*FROM\\\\s+(?<depName>python):(?<currentValue>.*?)-slim-bookworm@sha256:[a-z0-9]+"
       ],
       "datasourceTemplate": "docker",
       "currentValueTemplate": "{{currentValue}}"
