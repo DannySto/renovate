@@ -3,20 +3,13 @@
   "extends": [
     "config:recommended"
   ],
-    "enabledManagers": ["regex"],
-    "regexManagers": [
-      {
-        "fileMatch": ["^Dockerfile$"],
-        "matchStrings": [
-          "^\\+FROM python:(?<version>[^-]+?)-slim-bookworm@sha256:(?<digest>[a-z0-9]{64}) AS base$"
-        ],
-        "datasourceTemplate": "docker",
-        "versioning": "dockerDigest",
-        "extractVersion": "^\\+FROM python:(?<version>[^-]+?)-slim-bookworm@sha256:(?<digest>[a-z0-9]{64}) AS base$",
-        "replaceString": "+FROM python:${version}-slim-bookworm@sha256:${digest} AS base",
-        "registryUrls": ["https://index.docker.io/v1/"],
-        "lookupName": "python",
-        "datasource": "docker"
-      }
-    ]
+  "customManagers":[
+    {
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": [
+        "^\\s*FROM\\s+python:(?<version>.*?)-slim-bookworm@sha256:[a-z0-9]+"
+      ],
+      "datasourceTemplate": "docker"
+    }
+  ]
 }
