@@ -1,27 +1,10 @@
 {
   "extends": ["config:base"],
-  "regexManagers": [
-    {
-      "fileMatch": ["^Dockerfile$"],
-      "matchStrings": [
-        "ARG PYTHON_VERSION=(?<currentValue>\\d+\\.\\d+)"
-      ],
-      "depNameTemplate": "python",
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "docker"
+  "enabledManagers": ["dockerfile"],
+  "dockerfile": {
+    "enabled": true,
+    "digest": {
+      "enabled": true
     }
-  ],
-  "packageRules": [
-    {
-      "matchDepNames": ["python"],
-      "groupName": "python updates"
-    },
-    {
-      "matchDepNames": ["python"],
-      "matchUpdateTypes": ["minor", "patch"]
-    }
-  ],
-  "docker": {
-    "enabled": true
   }
 }
