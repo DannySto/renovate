@@ -14,10 +14,11 @@
   "packageRules": [
     {
       "matchDepNames": ["python"],
-      "groupName": "python updates",
-      "allowedVersions": "/^\\d+\\.\\d+$/",
-      "versioning": "docker",
-      "updateTypes": ["minor", "patch"]
+      "groupName": "python updates"
+    },
+    {
+      "matchDepNames": ["python"],
+      "matchUpdateTypes": ["minor", "patch"]
     }
   ],
   "docker": {
