@@ -1,15 +1,26 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
-  "customManagers": [
+  "extends": ["config:base"],
+  "regexManagers": [
     {
-      "customType": "regex",
-      "managerFilePatterns": ["/^Dockerfile$/"],
-      "matchStrings": ["ARG PYTHON_VERSION=(?<currentValue>.*?)\\n"],
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": [
+        "ARG PYTHON_VERSION=(?<currentValue>\\d+\\.\\d+)"
+      ],
       "depNameTemplate": "python",
       "datasourceTemplate": "docker",
-      "versioningTemplate": "docker"    }
-  ]
+      "versioningTemplate": "docker"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchDepNames": ["python"],
+      "groupName": "python updates",
+      "allowedVersions": "/^\\d+\\.\\d+$/",
+      "versioning": "docker",
+      "updateTypes": ["minor", "patch"]
+    }
+  ],
+  "docker": {
+    "enabled": true
+  }
 }
