@@ -1,16 +1,9 @@
 {
-  "extends": [
-    "config:recommended"
-  ],
-  "enabledManagers": [
-    "custom.regex"
-  ],
+  "extends": ["config:recommended"],
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": [
-        "/^Dockerfile$/"
-      ],
+      "fileMatch": ["Dockerfile"],
       "matchStrings": [
         "FROM python:\\\"(?<version>[\\d.]+)\\\"-slim-bookworm@sha256:(?<currentValue>[a-f0-9]{64})"
       ],
