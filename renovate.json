@@ -5,12 +5,10 @@
     {
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
-        "FROM python:\\\"(?<version>.*?)\\\"-slim-bookworm@sha256:(?<digest>[a-f0-9]{64})"
+        "FROM python:\\\"(?<version>[\\d.]+)\\\"-slim-bookworm@sha256:(?<digest>[a-f0-9]{64})"
       ],
       "datasourceTemplate": "docker",
-      "depNameTemplate": "python",
-      "versioningTemplate": "docker",
-      "versionTemplate": "{{version}}-slim-bookworm"
+      "depNameTemplate": "python"
     }
   ]
 }
